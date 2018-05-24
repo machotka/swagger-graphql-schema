@@ -127,7 +127,12 @@ const createHttpResolver = ({ apiDefinition, propertyName, operation: operationD
 
 				throw new ApiError(
 					!response ? (
-						error
+						{
+							data: {
+								...error,
+								// message: error.toString(),
+							},
+						}
 					) : (
 						{
 							code: response.status,
